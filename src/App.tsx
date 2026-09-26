@@ -16,6 +16,7 @@ import {
   Moon,
 } from "lucide-react";
 import { resumeData } from "./resumeData";
+import { NeuralBackground } from "./NeuralBackground";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
@@ -66,7 +67,10 @@ function App() {
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Neural Background */}
+      <NeuralBackground />
+      
       {/* Top Navigation Bar */}
       <nav
         className="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm"
@@ -135,7 +139,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <header className="max-w-4xl mx-auto px-6 pt-12 pb-10 fade-in-up">
+      <header className="max-w-4xl mx-auto px-6 pt-12 pb-10 fade-in-up relative z-10">
         {/* Cover Photo Banner */}
         <div className="relative mb-16">
           <div className="cover-overlay h-48 sm:h-56 rounded-2xl overflow-hidden shadow-md">
@@ -207,7 +211,7 @@ function App() {
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-6 pb-20">
+      <div className="max-w-4xl mx-auto px-6 pb-20 relative z-10">
         <hr
           className="border-0 h-px"
           style={{

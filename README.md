@@ -16,6 +16,7 @@ A clean, professional portfolio and resume website built with **React**, **Vite*
 - **Notion / LinkedIn-inspired design** — Clean typography, subtle borders, soft color-coded section icons, and a calm neutral palette.
 - **Light & Dark mode** — Toggle between a warm nature-inspired light theme and a premium forest-night dark theme. Preference is saved in localStorage and respects system preference on first visit.
 - **Scroll animations** — Sections fade in and slide up as you scroll, experience cards slide in from the left with staggered delays, and stat cards scale in elegantly.
+- **Neural background** — Interactive particle network animation that responds to mouse movement, using theme-aware sage green and warm gold particles that adapt to light/dark mode.
 - **Interactive experience cards** — Click any job to expand and view details, bullet points, and skills.
 - **Sticky navigation** — Quick-access nav bar with smooth scrolling to each section.
 - **Responsive layout** — Fully mobile-friendly, works on all screen sizes.
