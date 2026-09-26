@@ -1,40 +1,43 @@
 # Eugene Belong — Portfolio & Resume
 
-A clean, professional portfolio and resume website built with **React**, **Vite**, and **Tailwind CSS**. Designed with a Notion / LinkedIn-inspired aesthetic — minimal, readable, and elegant.
+A clean, professional portfolio and resume website built with **React**, **Vite**, **Tailwind CSS**, and **Framer Motion**. Designed with a premium forest-green aesthetic — minimal, animated, and elegant.
 
-![Preview](https://img.shields.io/badge/status-live-success?style=flat-square)
+![Status](https://img.shields.io/badge/status-live-success?style=flat-square)
 ![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
 ![Vite](https://img.shields.io/badge/Vite-6-purple?style=flat-square&logo=vite)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?style=flat-square&logo=tailwindcss)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=flat-square&logo=typescript)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-11-ff69b4?style=flat-square&logo=framer)
 
 ---
 
 ## Features
 
-- **Single-file resume data** — All content (profile, experience, skills, education, links) lives in `src/resumeData.ts` for easy updates.
-- **Notion / LinkedIn-inspired design** — Clean typography, subtle borders, soft color-coded section icons, and a calm neutral palette.
-- **Light & Dark mode** — Toggle between a warm nature-inspired light theme and a premium forest-night dark theme. Preference is saved in localStorage and respects system preference on first visit.
+- **Single-file resume data** — All content (profile, experience, skills, education, links, images) lives in `src/resumeData.ts` for easy updates.
+- **Forest green color palette** — Cohesive nature-inspired theme using `#435146`, `#1C1C1C`, `#4A6958`, `#1B2922` across both light and dark modes.
+- **Light & Dark mode** — Toggle between a clean forest-light theme and a premium forest-night dark theme. Preference is saved in localStorage and respects system preference on first visit.
+- **Neural background** — Interactive particle network animation using `motion.div` and canvas. Responds to mouse movement with theme-aware particles that adapt to light/dark mode.
 - **Scroll animations** — Sections fade in and slide up as you scroll, experience cards slide in from the left with staggered delays, and stat cards scale in elegantly.
-- **Neural background** — Interactive particle network animation that responds to mouse movement, using theme-aware sage green and warm gold particles that adapt to light/dark mode.
-- **Interactive experience cards** — Click any job to expand and view details, bullet points, and skills.
+- **Cover photo banner** — LinkedIn-style hero section with a full-width cover photo and overlapping profile picture with gradient ring.
+- **Print to PDF** — Dedicated button to export the portfolio as a clean, professional PDF document.
 - **Sticky navigation** — Quick-access nav bar with smooth scrolling to each section.
 - **Responsive layout** — Fully mobile-friendly, works on all screen sizes.
 - **Lucide icons** — Lightweight, consistent icon set via `lucide-react`.
-- **Print-friendly** — Clean print styles included.
+- **Print-friendly** — Clean print styles with automatic light-mode fallback for professional PDF output.
 - **Zero emojis** — Professional look using only icons and typography.
 
 ---
 
 ## Tech Stack
 
-| Tool           | Purpose                          |
-| -------------- | -------------------------------- |
-| React 18       | UI framework                     |
-| Vite 6         | Build tool & dev server          |
-| TypeScript     | Type-safe code                   |
-| Tailwind CSS 4 | Utility-first styling            |
-| Lucide React   | Icon library                     |
+| Tool            | Purpose                          |
+| --------------- | -------------------------------- |
+| React 18        | UI framework                     |
+| Vite 6          | Build tool & dev server          |
+| TypeScript      | Type-safe code                   |
+| Tailwind CSS 4  | Utility-first styling            |
+| Framer Motion   | Animations & transitions         |
+| Lucide React    | Icon library                     |
 
 ---
 
@@ -43,11 +46,12 @@ A clean, professional portfolio and resume website built with **React**, **Vite*
 ```
 ├── index.html              # Entry HTML with favicon & meta
 ├── public/
-│   └── favicon.svg         # SVG favicon (blue "E" badge)
+│   └── favicon.svg         # SVG favicon (forest green "E" badge)
 ├── src/
 │   ├── App.tsx             # Main portfolio component
+│   ├── NeuralBackground.tsx # Interactive particle network background
 │   ├── main.tsx            # React entry point
-│   ├── index.css           # Global styles & Tailwind import
+│   ├── index.css           # Global styles, theme variables & Tailwind
 │   └── resumeData.ts       # All resume data in one file
 ├── package.json
 ├── vite.config.js
@@ -113,6 +117,7 @@ export const resumeData = {
     linkedin: "https://linkedin.com/in/eugene-belong-46b472393",
     linkedinDisplay: "linkedin.com/in/eugene-belong-46b472393",
     image: "https://media.licdn.com/...",
+    coverImage: "https://media.licdn.com/...",
   },
   // ...
 };
@@ -165,34 +170,133 @@ Add a new object to the `education` array:
 
 | Section              | Description                                        |
 | -------------------- | -------------------------------------------------- |
-| **Header**           | Profile photo, name, title, and contact links      |
-| **Summary**          | Professional summary paragraph                     |
+| **Header**           | Cover photo, profile photo with gradient ring, name, title, and contact links |
+| **Summary**          | Professional summary paragraph with accent border  |
 | **Core Skills**      | Skill tags displayed as interactive badges         |
-| **Experience**       | Clickable job cards with expandable details        |
-| **Education**        | Degree and school information                      |
+| **Experience**       | 18 job cards with role, company, date, location, bullets, and skills |
+| **Education**        | Degree and school information in a 2-column grid   |
 | **Quick Stats**      | At-a-glance numbers (12+ years, 18 companies, 15 skills, 2 degrees) |
 | **Footer**           | Copyright and contact links                        |
 
 ---
 
-## Customization
+## Color Palette
 
-### Colors
+The theme uses a cohesive **forest green** palette:
 
-The theme uses Notion-inspired neutral colors:
+| Hex       | Name             | Usage                                    |
+| --------- | ---------------- | ---------------------------------------- |
+| `#435146` | Medium Forest    | Accents, secondary text, gradient stops  |
+| `#1C1C1C` | Near Black       | Dark mode backgrounds, primary text (light mode) |
+| `#4A6958` | Deep Sage        | Primary accent, buttons, links, highlights |
+| `#1B2922` | Dark Forest      | Dark mode secondary backgrounds          |
 
-| Token         | Hex       | Usage              |
-| ------------- | --------- | ------------------ |
-| Text primary  | `#37352f` | Body text          |
-| Text secondary| `#787774` | Muted text         |
-| Border        | `#e8e8e4` | Dividers & borders |
-| Background    | `#ffffff` | Page background    |
-| Surface       | `#f1f1ef` | Tag backgrounds    |
-| Accent blue   | `#2383e2` | Links & highlights |
+### Light Theme
+
+| Token            | Hex       | Usage              |
+| ---------------- | --------- | ------------------ |
+| Background       | `#f8f9f8` | Page background    |
+| Surface          | `#ffffff` | Card backgrounds   |
+| Text primary     | `#1C1C1C` | Body text          |
+| Text secondary   | `#435146` | Muted text         |
+| Accent           | `#4A6958` | Links & highlights |
+| Border           | `#d4dbd6` | Dividers & borders |
+| Tag background   | `#e8ebe8` | Skill tags         |
+
+### Dark Theme
+
+| Token            | Hex       | Usage              |
+| ---------------- | --------- | ------------------ |
+| Background       | `#1C1C1C` | Page background    |
+| Surface          | `#242d27` | Card backgrounds   |
+| Text primary     | `#f0f2f0` | Body text          |
+| Text secondary   | `#b8c4ba` | Muted text         |
+| Accent           | `#6b8a74` | Links & highlights |
+| Border           | `#344038` | Dividers & borders |
+| Tag background   | `#2a352e` | Skill tags         |
 
 ### Fonts
 
 Uses **Inter** from Google Fonts with system-ui fallback.
+
+---
+
+## Theme Toggle
+
+The theme toggle button (sun/moon icon) is located in the top navigation bar:
+
+- **First visit**: Detects system preference (`prefers-color-scheme`)
+- **Subsequent visits**: Loads saved preference from `localStorage`
+- **Manual toggle**: Click the icon to switch themes instantly
+- **Print**: Automatically uses light mode for clean PDF output
+
+---
+
+## Neural Background
+
+The interactive particle network background (`src/NeuralBackground.tsx`) features:
+
+- **Theme-aware particles** — Colors adapt to light/dark mode
+- **Mouse interaction** — Particles connect to cursor within 180px radius
+- **Particle connections** — Lines drawn between particles within 140px
+- **Performance optimized** — 70 particles on desktop, 35 on mobile
+- **Smooth animations** — Wrapped in `motion.div` with fade-in on load
+- **Hidden in print** — Automatically disabled when printing
+
+---
+
+## Print to PDF
+
+Click the **Print / PDF** button in the navigation bar to export the portfolio:
+
+- Navigation bar is automatically hidden
+- Neural background is disabled
+- Cover photo is hidden to save space
+- All experience details are fully visible
+- Colors switch to light mode for professional output
+- Optimized margins and page breaks for clean PDF
+
+---
+
+## Customization
+
+### Changing the Color Palette
+
+Edit the CSS variables in `src/index.css`:
+
+```css
+:root {
+  /* Light Theme */
+  --text-accent: #4A6958;
+  --gradient-text-from: #4A6958;
+  /* ... */
+}
+
+html.dark {
+  /* Dark Theme */
+  --text-accent: #6b8a74;
+  --gradient-text-from: #8aaa94;
+  /* ... */
+}
+```
+
+### Changing the Neural Background
+
+Edit `src/NeuralBackground.tsx` to customize:
+
+```ts
+const palette = isDark
+  ? {
+      particle: { r: 107, g: 138, b: 116 }, // Particle color
+      particleOpacity: 0.6,
+      connectionOpacity: 0.25,
+      warm: { r: 74, g: 105, b: 88 }, // Accent color
+      warmOpacity: 0.4,
+    }
+  : {
+      // Light mode colors...
+    };
+```
 
 ---
 
