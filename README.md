@@ -167,7 +167,7 @@ Add a new object to the `education` array:
 | **Core Skills**      | Skill tags displayed as interactive badges         |
 | **Experience**       | Clickable job cards with expandable details        |
 | **Education**        | Degree and school information                      |
-| **Quick Stats**      | At-a-glance numbers (years, companies, skills)     |
+| **Quick Stats**      | At-a-glance numbers (12+ years, 18 companies, 15 skills, 2 degrees) |
 | **Footer**           | Copyright and contact links                        |
 
 ---
