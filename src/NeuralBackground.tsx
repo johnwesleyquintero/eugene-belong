@@ -42,20 +42,20 @@ export const NeuralBackground: React.FC = () => {
     let w = (canvas.width = window.innerWidth);
     let h = (canvas.height = window.innerHeight);
 
-    // Nature-inspired palette - adapts to theme
+    // Forest green palette - adapts to theme
     const palette = isDark
       ? {
-          particle: { r: 168, g: 200, b: 154 }, // Bright sage #a8c89a
+          particle: { r: 107, g: 138, b: 116 }, // Forest green #6b8a74
           particleOpacity: 0.6,
           connectionOpacity: 0.25,
-          warm: { r: 212, g: 184, b: 144 }, // Warm gold #d4b890
+          warm: { r: 74, g: 105, b: 88 }, // Deep sage #4A6958
           warmOpacity: 0.4,
         }
       : {
-          particle: { r: 121, g: 139, b: 114 }, // Sage green #798b72
+          particle: { r: 74, g: 105, b: 88 }, // Deep sage #4A6958
           particleOpacity: 0.35,
           connectionOpacity: 0.12,
-          warm: { r: 166, g: 124, b: 82 }, // Terracotta #a67c52
+          warm: { r: 67, g: 81, b: 70 }, // Forest #435146
           warmOpacity: 0.2,
         };
 
@@ -203,8 +203,8 @@ export const NeuralBackground: React.FC = () => {
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden no-print"
       style={{
         background: isDark
-          ? "linear-gradient(180deg, #0f1419 0%, #0a0e13 50%, #0f1419 100%)"
-          : "linear-gradient(180deg, #faf8f5 0%, #f5f3ef 100%)",
+          ? "linear-gradient(180deg, #1C1C1C 0%, #1B2922 50%, #1C1C1C 100%)"
+          : "linear-gradient(180deg, #f8f9f8 0%, #f0f2f0 100%)",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -217,8 +217,8 @@ export const NeuralBackground: React.FC = () => {
         className="absolute inset-0"
         style={{
           background: isDark
-            ? "radial-gradient(ellipse at top, rgba(168, 200, 154, 0.08) 0%, transparent 60%)"
-            : "radial-gradient(ellipse at top, rgba(121, 139, 114, 0.06) 0%, transparent 60%)",
+            ? "radial-gradient(ellipse at top, rgba(107, 138, 116, 0.08) 0%, transparent 60%)"
+            : "radial-gradient(ellipse at top, rgba(74, 105, 88, 0.06) 0%, transparent 60%)",
         }}
       />
     </motion.div>
