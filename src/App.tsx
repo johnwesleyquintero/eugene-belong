@@ -23,10 +23,8 @@ function App() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
-    const saved = localStorage.getItem("theme");
-    if (saved) return saved === "dark";
-    // Default to dark mode if no preference saved
-    return true;
+    // Dark mode is the default theme; only respect an explicit saved light preference
+    return localStorage.getItem("theme") !== "light";
   });
 
   useEffect(() => {
