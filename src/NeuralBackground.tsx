@@ -45,11 +45,11 @@ export const NeuralBackground: React.FC = () => {
     // Nature-inspired palette - adapts to theme
     const palette = isDark
       ? {
-          particle: { r: 154, g: 184, b: 144 }, // Sage green #9ab890
-          particleOpacity: 0.5,
-          connectionOpacity: 0.18,
-          warm: { r: 196, g: 168, b: 128 }, // Warm gold #c4a880
-          warmOpacity: 0.3,
+          particle: { r: 168, g: 200, b: 154 }, // Bright sage #a8c89a
+          particleOpacity: 0.6,
+          connectionOpacity: 0.25,
+          warm: { r: 212, g: 184, b: 144 }, // Warm gold #d4b890
+          warmOpacity: 0.4,
         }
       : {
           particle: { r: 121, g: 139, b: 114 }, // Sage green #798b72
@@ -201,6 +201,11 @@ export const NeuralBackground: React.FC = () => {
   return (
     <motion.div
       className="fixed inset-0 z-0 pointer-events-none overflow-hidden no-print"
+      style={{
+        background: isDark
+          ? "linear-gradient(180deg, #0f1419 0%, #0a0e13 50%, #0f1419 100%)"
+          : "linear-gradient(180deg, #faf8f5 0%, #f5f3ef 100%)",
+      }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, ease: "easeOut" }}
@@ -212,8 +217,8 @@ export const NeuralBackground: React.FC = () => {
         className="absolute inset-0"
         style={{
           background: isDark
-            ? "radial-gradient(ellipse at top, rgba(154, 184, 144, 0.03) 0%, transparent 60%)"
-            : "radial-gradient(ellipse at top, rgba(121, 139, 114, 0.04) 0%, transparent 60%)",
+            ? "radial-gradient(ellipse at top, rgba(168, 200, 154, 0.08) 0%, transparent 60%)"
+            : "radial-gradient(ellipse at top, rgba(121, 139, 114, 0.06) 0%, transparent 60%)",
         }}
       />
     </motion.div>

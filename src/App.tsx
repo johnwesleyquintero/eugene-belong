@@ -82,12 +82,12 @@ function App() {
         <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center shadow-sm"
+              className="w-8 h-8 rounded-lg flex items-center justify-center shadow-md"
               style={{
                 background: "linear-gradient(135deg, var(--gradient-text-from), var(--gradient-text-to))",
               }}
             >
-              <span className="text-white font-bold text-sm">E</span>
+              <span className="font-bold text-sm" style={{ color: "white" }}>E</span>
             </div>
             <span
               className="font-bold text-[16px]"
