@@ -49,7 +49,7 @@ export const resumeData = {
     {
       role: "Customer Service Specialist",
       company: "Tsunami Express Car Wash",
-      date: "December 2024 – Present",
+      date: "December 2024 – June 2026",
       location: "Lake Oswego, Oregon, United States",
       bullets: [
         "Delivered professional customer service in a fast-paced car wash environment, handling client inquiries, service requests, and account concerns.",

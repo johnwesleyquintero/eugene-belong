@@ -12,6 +12,7 @@ import {
   User,
   Target,
   Layers,
+  Printer,
 } from "lucide-react";
 import { resumeData } from "./resumeData";
 import { useState } from "react";
@@ -40,15 +41,24 @@ function App() {
             <a href="#experience" className="hover:text-[#37352f] transition-colors">Experience</a>
             <a href="#education" className="hover:text-[#37352f] transition-colors">Education</a>
           </div>
-          <a
-            href={resumeData.profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[13px] text-[#2383e2] hover:underline"
-          >
-            <Linkedin size={14} />
-            <span className="hidden sm:inline">LinkedIn</span>
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href={resumeData.profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-[13px] text-[#2383e2] hover:underline"
+            >
+              <Linkedin size={14} />
+              <span className="hidden sm:inline">LinkedIn</span>
+            </a>
+            <button
+              onClick={() => window.print()}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium text-white bg-[#2383e2] rounded-md hover:bg-[#1a6fc4] transition-colors no-print"
+            >
+              <Printer size={14} />
+              <span className="hidden sm:inline">Print / PDF</span>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -186,7 +196,7 @@ function App() {
 
                 {/* Expanded Content */}
                 {expandedExp === index && (
-                  <div className="mt-4 ml-5.5 animate-in fade-in">
+                  <div className="mt-4 ml-5.5 animate-in fade-in print-show">
                     <p className="text-[13px] text-[#787774] mb-3 flex items-center gap-1.5">
                       <MapPin size={12} />
                       {exp.location}
