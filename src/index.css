@@ -1,6 +1,102 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+:root {
+  /* Light Theme - Nature Inspired */
+  --bg-primary: #faf8f5;
+  --bg-secondary: #f5f3ef;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #fdfcfa;
+  --bg-tag: #f0ede6;
+  --bg-tag-hover: #e8f0e6;
+  --bg-badge: #f0ede6;
+  --bg-nav: rgba(250, 248, 245, 0.95);
+  --bg-footer: #f0ede6;
+  --bg-icon-blue: #e8f0e6;
+  --bg-icon-warm: #f5e6d8;
+  --bg-icon-earth: #e8e0d4;
+  --bg-icon-green: #d8e4d4;
+  --bg-summary: #f0ede6;
+
+  --text-primary: #3d4a3f;
+  --text-secondary: #6b7a6e;
+  --text-muted: #8a9688;
+  --text-accent: #798b72;
+  --text-accent-hover: #5a6b54;
+  --text-company: #798b72;
+
+  --border-primary: #e8e4db;
+  --border-hover: rgba(121, 139, 114, 0.3);
+  --border-summary: rgba(121, 139, 114, 0.3);
+
+  --gradient-text-from: #798b72;
+  --gradient-text-to: #5a6b54;
+  --gradient-accent-from: #798b72;
+  --gradient-accent-to: #a8b5a0;
+  --gradient-ring-1: #798b72;
+  --gradient-ring-2: #a8b5a0;
+  --gradient-ring-3: #c4b5a0;
+  --gradient-bullet-from: #798b72;
+  --gradient-bullet-to: #5a6b54;
+
+  --shadow-card: rgba(121, 139, 114, 0.12);
+  --shadow-card-hover: rgba(121, 139, 114, 0.18);
+  --shadow-btn: rgba(121, 139, 114, 0.3);
+
+  --scrollbar-from: #b8b5a8;
+  --scrollbar-to: #9a9688;
+
+  --divider: #e8e4db;
+}
+
+html.dark {
+  /* Dark Theme - Premium Forest Night */
+  --bg-primary: #12161a;
+  --bg-secondary: #0f1317;
+  --bg-surface: #1a1f24;
+  --bg-surface-alt: #1e2429;
+  --bg-tag: #252b31;
+  --bg-tag-hover: #2a3a2e;
+  --bg-badge: #252b31;
+  --bg-nav: rgba(18, 22, 26, 0.92);
+  --bg-footer: #0f1317;
+  --bg-icon-blue: #1e2e24;
+  --bg-icon-warm: #2e2418;
+  --bg-icon-earth: #2a2418;
+  --bg-icon-green: #1e2e24;
+  --bg-summary: #1e2429;
+
+  --text-primary: #e8e4db;
+  --text-secondary: #a8b5a0;
+  --text-muted: #7a8878;
+  --text-accent: #9ab890;
+  --text-accent-hover: #b5d4a8;
+  --text-company: #9ab890;
+
+  --border-primary: #2a3038;
+  --border-hover: rgba(154, 184, 144, 0.4);
+  --border-summary: rgba(154, 184, 144, 0.4);
+
+  --gradient-text-from: #9ab890;
+  --gradient-text-to: #b5d4a8;
+  --gradient-accent-from: #9ab890;
+  --gradient-accent-to: #7a9870;
+  --gradient-ring-1: #9ab890;
+  --gradient-ring-2: #7a9870;
+  --gradient-ring-3: #c4a880;
+  --gradient-bullet-from: #9ab890;
+  --gradient-bullet-to: #7a9870;
+
+  --shadow-card: rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: rgba(154, 184, 144, 0.15);
+  --shadow-btn: rgba(154, 184, 144, 0.4);
+
+  --scrollbar-from: #3a4248;
+  --scrollbar-to: #2a3038;
+
+  --divider: #2a3038;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,14 +109,15 @@ body {
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #3d4a3f;
-  background: linear-gradient(180deg, #faf8f5 0%, #f5f3ef 100%);
+  color: var(--text-primary);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Nature-inspired selection */
+/* Selection */
 ::selection {
-  background: rgba(121, 139, 114, 0.2);
+  background: rgba(154, 184, 144, 0.25);
 }
 
 /* Smooth scrollbar */
@@ -33,17 +130,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #b8b5a8 0%, #9a9688 100%);
+  background: linear-gradient(180deg, var(--scrollbar-from) 0%, var(--scrollbar-to) 100%);
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9a9688 0%, #7d7a6e 100%);
-}
-
-/* Gradient text utility - Nature tones */
+/* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #798b72 0%, #5a6b54 100%);
+  background: linear-gradient(135deg, var(--gradient-text-from) 0%, var(--gradient-text-to) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -96,21 +189,21 @@ body {
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px -8px rgba(121, 139, 114, 0.15);
+  box-shadow: 0 12px 28px -8px var(--shadow-card-hover);
 }
 
-/* Skill tag with nature tones */
+/* Skill tag */
 .skill-tag {
   transition: all 0.25s ease;
-  background: linear-gradient(135deg, #f0ede6 0%, #e8e4db 100%);
-  border: 1px solid #d4d0c5;
+  background: linear-gradient(135deg, var(--bg-tag) 0%, var(--border-primary) 100%);
+  border: 1px solid var(--border-primary);
 }
 
 .skill-tag:hover {
-  background: linear-gradient(135deg, #e8f0e6 0%, #d4e0d2 100%);
-  border-color: #798b72;
+  background: linear-gradient(135deg, var(--bg-tag-hover) 0%, var(--bg-icon-blue) 100%);
+  border-color: var(--text-accent);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(121, 139, 114, 0.12);
+  box-shadow: 0 4px 12px var(--shadow-card);
 }
 
 /* Section header accent */
@@ -125,11 +218,11 @@ body {
   left: 0;
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #798b72 0%, #a8b5a0 100%);
+  background: linear-gradient(90deg, var(--gradient-accent-from) 0%, var(--gradient-accent-to) 100%);
   border-radius: 2px;
 }
 
-/* Profile photo ring - Nature gradient */
+/* Profile photo ring */
 .profile-ring {
   position: relative;
 }
@@ -139,36 +232,51 @@ body {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #798b72 0%, #a8b5a0 50%, #c4b5a0 100%);
+  background: linear-gradient(135deg, var(--gradient-ring-1) 0%, var(--gradient-ring-2) 50%, var(--gradient-ring-3) 100%);
   z-index: -1;
   opacity: 0.9;
 }
 
-/* Stats card with earth tones */
+/* Stats card */
 .stat-card {
-  background: linear-gradient(135deg, #ffffff 0%, #faf8f5 100%);
+  background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-surface-alt) 100%);
   transition: all 0.3s ease;
 }
 
 .stat-card:hover {
-  background: linear-gradient(135deg, #f8faf8 0%, #f0f4f0 100%);
   transform: translateY(-6px);
-  box-shadow: 0 16px 36px -10px rgba(121, 139, 114, 0.18);
+  box-shadow: 0 16px 36px -10px var(--shadow-card-hover);
 }
 
-/* Print button - Nature green */
+/* Print button */
 .print-btn {
-  background: linear-gradient(135deg, #798b72 0%, #5a6b54 100%);
+  background: linear-gradient(135deg, var(--gradient-text-from) 0%, var(--gradient-text-to) 100%);
   transition: all 0.25s ease;
 }
 
 .print-btn:hover {
-  background: linear-gradient(135deg, #5a6b54 0%, #4a5a44 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(121, 139, 114, 0.3);
+  box-shadow: 0 6px 16px var(--shadow-btn);
 }
 
-/* Cover photo gradient overlay - Warm tones */
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--bg-tag);
+  border: 1px solid var(--border-primary);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-tag-hover);
+  border-color: var(--text-accent);
+  transform: rotate(15deg) scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: rotate(0deg) scale(0.95);
+}
+
+/* Cover photo overlay */
 .cover-overlay {
   position: relative;
 }
@@ -179,26 +287,56 @@ body {
   inset: 0;
   background: linear-gradient(180deg, 
     rgba(0, 0, 0, 0) 0%, 
-    rgba(61, 74, 63, 0.05) 50%, 
-    rgba(61, 74, 63, 0.15) 100%
+    rgba(0, 0, 0, 0.05) 50%, 
+    rgba(0, 0, 0, 0.2) 100%
   );
   border-radius: inherit;
   pointer-events: none;
 }
 
-/* Experience card with subtle warmth */
+html.dark .cover-overlay::after {
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 0.2) 50%, 
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* Experience card */
 .exp-card {
-  background: linear-gradient(135deg, #ffffff 0%, #fdfcfa 100%);
-  border: 1px solid #e8e4db;
+  background: linear-gradient(135deg, var(--bg-surface) 0%, var(--bg-surface-alt) 100%);
+  border: 1px solid var(--border-primary);
   transition: all 0.25s ease;
 }
 
 .exp-card:hover {
-  border-color: rgba(121, 139, 114, 0.3);
-  box-shadow: 0 6px 20px -6px rgba(121, 139, 114, 0.12);
+  border-color: var(--border-hover);
+  box-shadow: 0 6px 20px -6px var(--shadow-card);
 }
 
-/* Animation for expanding experience items */
+/* Dark mode glow effects */
+html.dark .exp-card:hover {
+  box-shadow: 0 6px 24px -6px rgba(154, 184, 144, 0.2), inset 0 1px 0 rgba(154, 184, 144, 0.1);
+}
+
+html.dark .stat-card:hover {
+  box-shadow: 0 16px 40px -10px rgba(154, 184, 144, 0.25), inset 0 1px 0 rgba(154, 184, 144, 0.1);
+}
+
+html.dark .profile-ring::before {
+  opacity: 1;
+  filter: brightness(1.2);
+}
+
+html.dark .gradient-text {
+  filter: brightness(1.1);
+}
+
+html.dark .section-accent::after {
+  box-shadow: 0 0 8px rgba(154, 184, 144, 0.4);
+}
+
+/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -214,11 +352,37 @@ body {
   animation: fadeIn 0.2s ease-out;
 }
 
+/* Smooth theme transition */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+.fade-in-up, .fade-in-left, .scale-in, .card-hover, .skill-tag, .stat-card, .exp-card, .print-btn, .theme-toggle {
+  transition-property: all;
+}
+
 /* Print styles */
 @media print {
   @page {
     margin: 0.75in;
     size: letter;
+  }
+  
+  html, html.dark {
+    --bg-primary: #ffffff;
+    --bg-secondary: #ffffff;
+    --bg-surface: #ffffff;
+    --bg-surface-alt: #ffffff;
+    --bg-tag: #f5f3ef;
+    --bg-badge: #f0ede6;
+    --bg-nav: transparent;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-muted: #555555;
+    --border-primary: #e8e4db;
+    --divider: #e8e4db;
   }
   
   nav {
@@ -235,14 +399,12 @@ body {
     background: white !important;
   }
   
-  /* Remove animations and transitions for print */
   * {
     animation: none !important;
     transition: none !important;
     box-shadow: none !important;
   }
   
-  /* Make all elements visible for print */
   .fade-in-up,
   .fade-in-left,
   .scale-in {
@@ -250,9 +412,8 @@ body {
     transform: none !important;
   }
   
-  /* Ensure all experience items are visible */
   .exp-card {
-    border: 1px solid #e8e4db !important;
+    border: 1px solid var(--border-primary) !important;
     padding: 12px !important;
     margin-bottom: 8px !important;
     page-break-inside: avoid;
@@ -260,25 +421,16 @@ body {
     background: white !important;
   }
   
-  /* Better section breaks */
   section {
     page-break-inside: avoid;
     break-inside: avoid;
   }
   
-  /* Ensure headers don't orphan */
   h2, h3 {
     page-break-after: avoid;
     break-after: avoid;
   }
   
-  /* Remove hover states */
-  .exp-card:hover {
-    background: white !important;
-    border-color: #e8e4db !important;
-  }
-  
-  /* Compact spacing for print */
   header {
     padding-top: 0 !important;
     padding-bottom: 16px !important;
@@ -289,19 +441,16 @@ body {
     padding-bottom: 16px !important;
   }
   
-  /* Ensure links are visible */
   a {
-    color: #3d4a3f !important;
+    color: var(--text-primary) !important;
     text-decoration: none !important;
   }
   
-  /* Keep skill tags visible */
   .skill-tag {
     background-color: #f5f3ef !important;
-    border: 1px solid #d4d0c5 !important;
+    border: 1px solid var(--border-primary) !important;
   }
   
-  /* Hide cover photo in print */
   header .relative {
     display: none !important;
   }
