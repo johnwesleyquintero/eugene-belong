@@ -6,7 +6,6 @@ import {
   Briefcase,
   GraduationCap,
   Award,
-  ChevronRight,
   Building2,
   Calendar,
   User,
@@ -15,14 +14,7 @@ import {
   Printer,
 } from "lucide-react";
 import { resumeData } from "./resumeData";
-import { useState } from "react";
-
 function App() {
-  const [expandedExp, setExpandedExp] = useState<number | null>(null);
-
-  const toggleExpand = (index: number) => {
-    setExpandedExp(expandedExp === index ? null : index);
-  };
 
   return (
     <div className="min-h-screen bg-[#ffffff] text-[#37352f] font-['Inter',_'Segoe_UI',system-ui,sans-serif]">
@@ -161,27 +153,18 @@ function App() {
             <h2 className="text-[20px] font-semibold text-[#37352f]">Professional Experience</h2>
           </div>
 
-          <div className="pl-11 space-y-1">
+          <div className="pl-11 space-y-6">
             {resumeData.experience.map((exp, index) => (
               <div
                 key={index}
-                className="group border border-transparent hover:border-[#e8e8e4] rounded-lg p-4 -ml-4 transition-all duration-200 hover:bg-[#fafafa] cursor-pointer"
-                onClick={() => toggleExpand(index)}
+                className="border border-[#e8e8e4] rounded-lg p-5 -ml-4 bg-white"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start justify-between gap-4 mb-3">
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <ChevronRight
-                        size={14}
-                        className={`text-[#787774] transition-transform duration-200 ${
-                          expandedExp === index ? "rotate-90" : ""
-                        }`}
-                      />
-                      <h3 className="text-[15px] font-semibold text-[#37352f] truncate">
-                        {exp.role}
-                      </h3>
-                    </div>
-                    <div className="flex items-center gap-1.5 ml-5.5 text-[13.5px] text-[#787774]">
+                    <h3 className="text-[15px] font-semibold text-[#37352f] mb-1">
+                      {exp.role}
+                    </h3>
+                    <div className="flex items-center gap-1.5 text-[13.5px] text-[#787774]">
                       <Building2 size={13} className="flex-shrink-0" />
                       <span className="font-medium">{exp.company}</span>
                     </div>
@@ -194,36 +177,33 @@ function App() {
                   </div>
                 </div>
 
-                {/* Expanded Content */}
-                {expandedExp === index && (
-                  <div className="mt-4 ml-5.5 animate-in fade-in print-show">
-                    <p className="text-[13px] text-[#787774] mb-3 flex items-center gap-1.5">
-                      <MapPin size={12} />
-                      {exp.location}
-                    </p>
-                    <ul className="space-y-2.5">
-                      {exp.bullets.map((bullet, bIndex) => (
-                        <li
-                          key={bIndex}
-                          className="text-[14px] text-[#37352f]/80 leading-[1.7] flex items-start gap-2.5"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#787774] mt-2 flex-shrink-0" />
-                          {bullet}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {exp.skills.map((skill, sIndex) => (
-                        <span
-                          key={sIndex}
-                          className="inline-flex items-center px-2.5 py-1 rounded text-[12px] font-medium bg-[#f1f1ef] text-[#787774]"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+                <div className="ml-0">
+                  <p className="text-[13px] text-[#787774] mb-3 flex items-center gap-1.5">
+                    <MapPin size={12} />
+                    {exp.location}
+                  </p>
+                  <ul className="space-y-2.5">
+                    {exp.bullets.map((bullet, bIndex) => (
+                      <li
+                        key={bIndex}
+                        className="text-[14px] text-[#37352f]/80 leading-[1.7] flex items-start gap-2.5"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#787774] mt-2 flex-shrink-0" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {exp.skills.map((skill, sIndex) => (
+                      <span
+                        key={sIndex}
+                        className="inline-flex items-center px-2.5 py-1 rounded text-[12px] font-medium bg-[#f1f1ef] text-[#787774]"
+                      >
+                        {skill}
+                      </span>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -244,7 +224,7 @@ function App() {
             {resumeData.education.map((edu, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-4 rounded-lg border border-transparent hover:border-[#e8e8e4] hover:bg-[#fafafa] transition-all"
+                className="flex items-start gap-4 p-4 rounded-lg border border-[#e8e8e4] bg-white"
               >
                 <div className="w-10 h-10 rounded-lg bg-[#f1f1ef] flex items-center justify-center flex-shrink-0">
                   <GraduationCap size={18} className="text-[#787774]" />

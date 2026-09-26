@@ -58,6 +58,11 @@ body {
 
 /* Print styles */
 @media print {
+  @page {
+    margin: 0.75in;
+    size: letter;
+  }
+  
   nav {
     display: none !important;
   }
@@ -66,16 +71,63 @@ body {
     display: none !important;
   }
   
-  .group {
-    border: none !important;
-    padding: 8px 0 !important;
+  body {
+    font-size: 10pt;
+    line-height: 1.4;
   }
   
-  section {
+  /* Remove backgrounds and shadows for cleaner print */
+  * {
+    box-shadow: none !important;
+  }
+  
+  /* Ensure all experience items are visible */
+  .group {
+    border: 1px solid #e8e8e4 !important;
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+    page-break-inside: avoid;
     break-inside: avoid;
   }
   
-  body {
-    font-size: 11pt;
+  /* Better section breaks */
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Ensure headers don't orphan */
+  h2, h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  /* Remove hover states */
+  .group:hover {
+    background: white !important;
+    border-color: #e8e8e4 !important;
+  }
+  
+  /* Compact spacing for print */
+  header {
+    padding-top: 0 !important;
+    padding-bottom: 16px !important;
+  }
+  
+  section {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  
+  /* Ensure links are visible */
+  a {
+    color: #37352f !important;
+    text-decoration: none !important;
+  }
+  
+  /* Keep skill tags visible */
+  .bg-\[#f1f1ef\] {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #e0e0e0 !important;
   }
 }
