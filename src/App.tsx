@@ -261,14 +261,14 @@ function App() {
               <div className="w-10 h-10 mx-auto rounded-lg bg-[#e8f4fd] flex items-center justify-center mb-3">
                 <Briefcase size={18} className="text-[#2383e2]" />
               </div>
-              <div className="text-[24px] font-bold text-[#37352f]">10+</div>
+              <div className="text-[24px] font-bold text-[#37352f]">12+</div>
               <div className="text-[12px] text-[#787774] mt-1">Years Experience</div>
             </div>
             <div className="text-center p-5 rounded-xl bg-[#f9f9f8] border border-[#e8e8e4]">
               <div className="w-10 h-10 mx-auto rounded-lg bg-[#e8fde8] flex items-center justify-center mb-3">
                 <Building2 size={18} className="text-[#2ea44f]" />
               </div>
-              <div className="text-[24px] font-bold text-[#37352f]">13</div>
+              <div className="text-[24px] font-bold text-[#37352f]">18</div>
               <div className="text-[12px] text-[#787774] mt-1">Companies</div>
             </div>
             <div className="text-center p-5 rounded-xl bg-[#f9f9f8] border border-[#e8e8e4]">
