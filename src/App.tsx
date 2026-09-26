@@ -82,14 +82,11 @@ function App() {
       >
         <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center shadow-md"
-              style={{
-                background: "linear-gradient(135deg, var(--gradient-text-from), var(--gradient-text-to))",
-              }}
-            >
-              <span className="font-bold text-sm" style={{ color: "white" }}>E</span>
-            </div>
+            <img
+              src="/eugene_icon_favicon.png"
+              alt="Eugene Belong icon"
+              className="w-8 h-8 rounded-lg object-cover shadow-md"
+            />
             <span
               className="font-bold text-[16px]"
               style={{ color: "var(--text-primary)" }}
