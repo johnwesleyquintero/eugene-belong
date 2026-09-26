@@ -7,7 +7,7 @@ export const resumeData = {
     email: "eugenebelong.va3@gmail.com",
     linkedin: "https://linkedin.com/in/eugene-belong-46b472393",
     linkedinDisplay: "linkedin.com/in/eugene-belong-46b472393",
-    image: "https://media.licdn.com/dms/image/v2/D5635AQEXLiG0RIGMuQ/profile-framedphoto-shrink_200_200/B56ZwSmsg2IoAY-/0/1769838660007?e=1791057600&v=beta&t=czqDyD4b-YTA0CGSl8yb650arkvxPXib82P4immEaOU",
+    image: "https://media.licdn.com/dms/image/v2/D5603AQGk0E4ZT63Azw/profile-displayphoto-scale_200_200/B56ZwSmruOHAAY-/0/1769838658510?e=1792022400&v=beta&t=-t_Jo0rf_ZrzgndwttLKOuNFRNk8Y4ZRtnP8rSwqpF0",
   },
 
   summary:
