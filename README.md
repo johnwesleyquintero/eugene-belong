@@ -15,7 +15,7 @@ A clean, professional portfolio and resume website built with **React**, **Vite*
 
 - **Single-file resume data** — All content (profile, experience, skills, education, links, images) lives in `src/resumeData.ts` for easy updates.
 - **Forest green color palette** — Cohesive nature-inspired theme using `#435146`, `#1C1C1C`, `#4A6958`, `#1B2922` across both light and dark modes.
-- **Light & Dark mode** — Toggle between a clean forest-light theme and a premium forest-night dark theme. Preference is saved in localStorage and respects system preference on first visit.
+- **Light & Dark mode** — Toggle between a clean forest-light theme and a premium forest-night dark theme. Dark mode is the default. Preference is saved in localStorage.
 - **Neural background** — Interactive particle network animation using `motion.div` and canvas. Responds to mouse movement with theme-aware particles that adapt to light/dark mode.
 - **Scroll animations** — Sections fade in and slide up as you scroll, experience cards slide in from the left with staggered delays, and stat cards scale in elegantly.
 - **Cover photo banner** — LinkedIn-style hero section with a full-width cover photo and overlapping profile picture with gradient ring.
@@ -225,7 +225,7 @@ Uses **Inter** from Google Fonts with system-ui fallback.
 
 The theme toggle button (sun/moon icon) is located in the top navigation bar:
 
-- **First visit**: Detects system preference (`prefers-color-scheme`)
+- **Default theme**: Dark mode is the default theme on first visit
 - **Subsequent visits**: Loads saved preference from `localStorage`
 - **Manual toggle**: Click the icon to switch themes instantly
 - **Print**: Automatically uses light mode for clean PDF output

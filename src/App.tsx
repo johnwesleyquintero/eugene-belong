@@ -22,10 +22,11 @@ import { useEffect, useRef, useState } from "react";
 function App() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
+    if (typeof window === "undefined") return true;
     const saved = localStorage.getItem("theme");
     if (saved) return saved === "dark";
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // Default to dark mode if no preference saved
+    return true;
   });
 
   useEffect(() => {

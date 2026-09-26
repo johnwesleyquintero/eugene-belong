@@ -371,7 +371,7 @@ html.dark .section-accent::after {
 /* Print styles */
 @media print {
   @page {
-    margin: 0.75in;
+    margin: 0.5in;
     size: letter;
   }
   
@@ -380,25 +380,43 @@ html.dark .section-accent::after {
     --bg-secondary: #ffffff;
     --bg-surface: #ffffff;
     --bg-surface-alt: #ffffff;
-    --bg-tag: #f5f3ef;
-    --bg-badge: #f0ede6;
+    --bg-tag: #f5f5f5;
+    --bg-badge: #f0f0f0;
     --bg-nav: transparent;
+    --bg-footer: transparent;
     --text-primary: #000000;
     --text-secondary: #333333;
     --text-muted: #555555;
-    --border-primary: #e8e4db;
-    --divider: #e8e4db;
+    --text-accent: #333333;
+    --text-company: #333333;
+    --border-primary: #cccccc;
+    --border-hover: #cccccc;
+    --border-summary: #cccccc;
+    --divider: #cccccc;
+    --gradient-text-from: #000000;
+    --gradient-text-to: #333333;
+    --gradient-accent-from: #333333;
+    --gradient-accent-to: #555555;
+    --gradient-bullet-from: #333333;
+    --gradient-bullet-to: #555555;
   }
   
   body {
     background: #ffffff !important;
+    color: #000000 !important;
   }
   
+  /* Hide navigation and interactive elements */
   nav {
     display: none !important;
   }
   
   .no-print {
+    display: none !important;
+  }
+  
+  /* Hide neural background */
+  .fixed.inset-0 {
     display: none !important;
   }
   
@@ -408,12 +426,14 @@ html.dark .section-accent::after {
     background: white !important;
   }
   
+  /* Remove all animations and transitions */
   * {
     animation: none !important;
     transition: none !important;
     box-shadow: none !important;
   }
   
+  /* Make all animated elements visible */
   .fade-in-up,
   .fade-in-left,
   .scale-in {
@@ -421,50 +441,131 @@ html.dark .section-accent::after {
     transform: none !important;
   }
   
-  .exp-card {
-    border: 1px solid var(--border-primary) !important;
-    padding: 12px !important;
-    margin-bottom: 8px !important;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    background: white !important;
+  /* Compact header for print */
+  header {
+    padding-top: 0 !important;
+    padding-bottom: 12px !important;
   }
   
+  /* Show cover photo but make it smaller */
+  .cover-overlay {
+    height: 100px !important;
+    margin-bottom: 60px !important;
+  }
+  
+  /* Adjust profile photo position */
+  .profile-ring {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .profile-ring img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  /* Remove profile photo ring gradient for print */
+  .profile-ring::before {
+    display: none !important;
+  }
+  
+  /* Adjust profile info padding */
+  header .pl-0 {
+    padding-left: 100px !important;
+  }
+  
+  /* Compact section spacing */
   section {
-    page-break-inside: avoid;
-    break-inside: avoid;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    page-break-inside: auto;
   }
   
+  /* Ensure headers don't orphan */
   h2, h3 {
     page-break-after: avoid;
     break-after: avoid;
   }
   
-  header {
-    padding-top: 0 !important;
-    padding-bottom: 16px !important;
+  /* Experience cards - show all with proper breaks */
+  .exp-card {
+    border: 1px solid #cccccc !important;
+    padding: 10px !important;
+    margin-bottom: 6px !important;
+    margin-left: 0 !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background: white !important;
   }
   
-  section {
-    padding-top: 16px !important;
-    padding-bottom: 16px !important;
+  /* Remove hover effects */
+  .exp-card:hover,
+  .stat-card:hover,
+  .card-hover:hover {
+    transform: none !important;
+    box-shadow: none !important;
   }
   
+  /* Skill tags - simple borders */
+  .skill-tag {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #cccccc !important;
+    color: #333333 !important;
+  }
+  
+  /* Stat cards - simple layout */
+  .stat-card {
+    background: white !important;
+    border: 1px solid #cccccc !important;
+    padding: 12px !important;
+  }
+  
+  /* Gradient text - solid black for print */
+  .gradient-text {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #000000 !important;
+    color: #000000 !important;
+  }
+  
+  /* Section accents - simple underline */
+  .section-accent::after {
+    background: #333333 !important;
+    box-shadow: none !important;
+  }
+  
+  /* Links - black text, no decoration */
   a {
-    color: var(--text-primary) !important;
+    color: #000000 !important;
     text-decoration: none !important;
   }
   
-  .skill-tag {
-    background-color: #f5f3ef !important;
-    border: 1px solid var(--border-primary) !important;
+  /* Footer - compact */
+  footer {
+    margin-top: 20px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid #cccccc !important;
   }
   
-  header .relative {
-    display: none !important;
+  /* Dividers - simple lines */
+  hr {
+    background: #cccccc !important;
+    height: 1px !important;
   }
   
-  header .pl-0 {
-    padding-left: 0 !important;
+  /* Summary box - simple border */
+  #summary p {
+    background: white !important;
+    border-left: 2px solid #333333 !important;
+  }
+  
+  /* Education grid - single column for print */
+  #education .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Stats grid - 4 columns */
+  .grid.grid-cols-2 {
+    grid-template-columns: repeat(4, 1fr) !important;
   }
 }
