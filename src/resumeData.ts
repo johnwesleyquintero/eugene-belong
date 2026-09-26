@@ -8,6 +8,7 @@ export const resumeData = {
     linkedin: "https://linkedin.com/in/eugene-belong-46b472393",
     linkedinDisplay: "linkedin.com/in/eugene-belong-46b472393",
     image: "https://media.licdn.com/dms/image/v2/D5635AQEXLiG0RIGMuQ/profile-framedphoto-shrink_200_200/B56ZwSmsg2IoAY-/0/1769838660007?e=1791057600&v=beta&t=czqDyD4b-YTA0CGSl8yb650arkvxPXib82P4immEaOU",
+    coverImage: "https://media.licdn.com/dms/image/v2/D5616AQEarYJl6gGnzg/profile-displaybackgroundimage-shrink_350_1400/B56ZwSoGXnIYAY-/0/1769839029545?e=1792022400&v=beta&t=Hf02s5QoQqDVhCzhTvvqPGZHADrlvyYU6Hsk-S8dFe8",
   },
 
   summary:
