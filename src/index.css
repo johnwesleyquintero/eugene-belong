@@ -96,6 +96,15 @@ body {
     break-inside: avoid;
   }
   
+  /* Hide cover photo in print */
+  header .relative {
+    display: none !important;
+  }
+  
+  header .pl-0 {
+    padding-left: 0 !important;
+  }
+  
   /* Ensure headers don't orphan */
   h2, h3 {
     page-break-after: avoid;

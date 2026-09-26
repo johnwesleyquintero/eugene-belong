@@ -56,22 +56,34 @@ function App() {
 
       {/* Hero Section */}
       <header className="max-w-4xl mx-auto px-6 pt-12 pb-10">
-        <div className="flex flex-col sm:flex-row items-start gap-8">
-          <div className="flex-shrink-0">
+        {/* Cover Photo Banner */}
+        <div className="relative mb-16">
+          <div className="h-48 sm:h-56 rounded-xl overflow-hidden bg-gradient-to-br from-[#2383e2] to-[#1a6fc4]">
+            <img
+              src={resumeData.profile.coverImage}
+              alt="Cover"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Profile Photo - Overlapping Cover */}
+          <div className="absolute -bottom-12 left-8 sm:left-12">
             <img
               src={resumeData.profile.image}
               alt={resumeData.profile.name}
-              className="w-28 h-28 rounded-full object-cover border-2 border-[#e8e8e4] shadow-sm"
+              className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
             />
           </div>
-          <div className="flex-1">
-            <h1 className="text-[32px] font-bold text-[#37352f] leading-tight tracking-tight">
-              {resumeData.profile.name}
-            </h1>
-            <p className="text-[17px] text-[#787774] mt-1 font-medium">
-              {resumeData.profile.title}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-[#787774]">
+        </div>
+        
+        {/* Profile Info */}
+        <div className="pl-0 sm:pl-44">
+          <h1 className="text-[32px] font-bold text-[#37352f] leading-tight tracking-tight">
+            {resumeData.profile.name}
+          </h1>
+          <p className="text-[17px] text-[#787774] mt-1 font-medium">
+            {resumeData.profile.title}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-[#787774]">
               <a
                 href={`tel:${resumeData.profile.phone}`}
                 className="flex items-center gap-1.5 hover:text-[#2383e2] transition-colors"
@@ -100,7 +112,6 @@ function App() {
                 {resumeData.profile.linkedinDisplay}
               </a>
             </div>
-          </div>
         </div>
       </header>
 
