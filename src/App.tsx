@@ -19,33 +19,33 @@ function App() {
   return (
     <div className="min-h-screen bg-[#ffffff] text-[#37352f] font-['Inter',_'Segoe_UI',system-ui,sans-serif]">
       {/* Top Navigation Bar */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#e8e8e4]">
+      <nav className="sticky top-0 z-50 bg-gradient-to-r from-white/90 to-white/80 backdrop-blur-md border-b border-[#e8e8e4] shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 bg-[#2383e2] rounded flex items-center justify-center">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-gradient-to-br from-[#2383e2] to-[#1a6fc4] rounded-lg flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-sm">E</span>
             </div>
-            <span className="font-semibold text-[15px] text-[#37352f]">Eugene Belong</span>
+            <span className="font-bold text-[16px] text-[#37352f]">Eugene Belong</span>
           </div>
-          <div className="hidden sm:flex items-center gap-5 text-[13px] text-[#787774]">
-            <a href="#summary" className="hover:text-[#37352f] transition-colors">About</a>
-            <a href="#skills" className="hover:text-[#37352f] transition-colors">Skills</a>
-            <a href="#experience" className="hover:text-[#37352f] transition-colors">Experience</a>
-            <a href="#education" className="hover:text-[#37352f] transition-colors">Education</a>
+          <div className="hidden sm:flex items-center gap-6 text-[13px] text-[#787774]">
+            <a href="#summary" className="hover:text-[#2383e2] transition-all hover:translate-y-[-1px] font-medium">About</a>
+            <a href="#skills" className="hover:text-[#2383e2] transition-all hover:translate-y-[-1px] font-medium">Skills</a>
+            <a href="#experience" className="hover:text-[#2383e2] transition-all hover:translate-y-[-1px] font-medium">Experience</a>
+            <a href="#education" className="hover:text-[#2383e2] transition-all hover:translate-y-[-1px] font-medium">Education</a>
           </div>
           <div className="flex items-center gap-3">
             <a
               href={resumeData.profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[13px] text-[#2383e2] hover:underline"
+              className="flex items-center gap-1.5 text-[13px] text-[#2383e2] hover:text-[#1a6fc4] transition-all hover:translate-y-[-1px] font-medium"
             >
               <Linkedin size={14} />
               <span className="hidden sm:inline">LinkedIn</span>
             </a>
             <button
               onClick={() => window.print()}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium text-white bg-[#2383e2] rounded-md hover:bg-[#1a6fc4] transition-colors no-print"
+              className="print-btn flex items-center gap-2 px-4 py-2 text-[13px] font-semibold text-white rounded-lg shadow-md no-print"
             >
               <Printer size={14} />
               <span className="hidden sm:inline">Print / PDF</span>
@@ -58,7 +58,7 @@ function App() {
       <header className="max-w-4xl mx-auto px-6 pt-12 pb-10">
         {/* Cover Photo Banner */}
         <div className="relative mb-16">
-          <div className="h-48 sm:h-56 rounded-xl overflow-hidden bg-gradient-to-br from-[#2383e2] to-[#1a6fc4]">
+          <div className="cover-overlay h-48 sm:h-56 rounded-2xl overflow-hidden shadow-md">
             <img
               src={resumeData.profile.coverImage}
               alt="Cover"
@@ -66,86 +66,90 @@ function App() {
             />
           </div>
           {/* Profile Photo - Overlapping Cover */}
-          <div className="absolute -bottom-12 left-8 sm:left-12">
-            <img
-              src={resumeData.profile.image}
-              alt={resumeData.profile.name}
-              className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
-            />
+          <div className="absolute -bottom-14 left-8 sm:left-12">
+            <div className="profile-ring">
+              <img
+                src={resumeData.profile.image}
+                alt={resumeData.profile.name}
+                className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl"
+              />
+            </div>
           </div>
         </div>
         
         {/* Profile Info */}
         <div className="pl-0 sm:pl-44">
-          <h1 className="text-[32px] font-bold text-[#37352f] leading-tight tracking-tight">
+          <h1 className="text-[36px] font-extrabold leading-tight tracking-tight gradient-text">
             {resumeData.profile.name}
           </h1>
-          <p className="text-[17px] text-[#787774] mt-1 font-medium">
+          <p className="text-[18px] text-[#787774] mt-2 font-medium">
             {resumeData.profile.title}
           </p>
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-[#787774]">
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-[14px] text-[#787774]">
               <a
                 href={`tel:${resumeData.profile.phone}`}
-                className="flex items-center gap-1.5 hover:text-[#2383e2] transition-colors"
+                className="flex items-center gap-2 hover:text-[#2383e2] transition-all hover:translate-x-0.5"
               >
-                <Phone size={14} />
-                {resumeData.profile.phone}
+                <Phone size={15} className="text-[#2383e2]" />
+                <span>{resumeData.profile.phone}</span>
               </a>
               <a
                 href={`mailto:${resumeData.profile.email}`}
-                className="flex items-center gap-1.5 hover:text-[#2383e2] transition-colors"
+                className="flex items-center gap-2 hover:text-[#2383e2] transition-all hover:translate-x-0.5"
               >
-                <Mail size={14} />
-                {resumeData.profile.email}
+                <Mail size={15} className="text-[#2383e2]" />
+                <span>{resumeData.profile.email}</span>
               </a>
-              <span className="flex items-center gap-1.5">
-                <MapPin size={14} />
-                {resumeData.profile.location}
+              <span className="flex items-center gap-2">
+                <MapPin size={15} className="text-[#2383e2]" />
+                <span>{resumeData.profile.location}</span>
               </span>
               <a
                 href={resumeData.profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-[#2383e2] transition-colors"
+                className="flex items-center gap-2 hover:text-[#2383e2] transition-all hover:translate-x-0.5"
               >
-                <Linkedin size={14} />
-                {resumeData.profile.linkedinDisplay}
+                <Linkedin size={15} className="text-[#2383e2]" />
+                <span>{resumeData.profile.linkedinDisplay}</span>
               </a>
             </div>
         </div>
       </header>
 
       <div className="max-w-4xl mx-auto px-6 pb-20">
-        <hr className="border-[#e8e8e4]" />
+        <hr className="border-0 h-px bg-gradient-to-r from-transparent via-[#e8e8e4] to-transparent" />
 
         {/* Professional Summary */}
-        <section id="summary" className="py-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded flex items-center justify-center bg-[#e8f4fd]">
-              <User size={16} className="text-[#2383e2]" />
+        <section id="summary" className="py-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#e8f4fd] to-[#d4e9f7] shadow-sm">
+              <User size={17} className="text-[#2383e2]" />
             </div>
-            <h2 className="text-[20px] font-semibold text-[#37352f]">Professional Summary</h2>
+            <h2 className="text-[22px] font-bold text-[#37352f] section-accent">Professional Summary</h2>
           </div>
-          <p className="text-[15px] leading-[1.75] text-[#37352f]/85 pl-11">
-            {resumeData.summary}
-          </p>
+          <div className="pl-12">
+            <p className="text-[15px] leading-[1.8] text-[#37352f]/85 bg-gradient-to-r from-[#fafbfc] to-transparent p-4 rounded-lg border-l-2 border-[#2383e2]/20">
+              {resumeData.summary}
+            </p>
+          </div>
         </section>
 
-        <hr className="border-[#e8e8e4]" />
+        <hr className="border-0 h-px bg-gradient-to-r from-transparent via-[#e8e8e4] to-transparent" />
 
         {/* Core Skills */}
-        <section id="skills" className="py-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded flex items-center justify-center bg-[#fce8e8]">
-              <Target size={16} className="text-[#e03e3e]" />
+        <section id="skills" className="py-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#fce8e8] to-[#f5d4d4] shadow-sm">
+              <Target size={17} className="text-[#e03e3e]" />
             </div>
-            <h2 className="text-[20px] font-semibold text-[#37352f]">Core Skills</h2>
+            <h2 className="text-[22px] font-bold text-[#37352f] section-accent">Core Skills</h2>
           </div>
-          <div className="pl-11 flex flex-wrap gap-2">
+          <div className="pl-12 flex flex-wrap gap-2.5">
             {resumeData.coreSkills.map((skill, index) => (
               <span
                 key={index}
-                className="inline-flex items-center px-3 py-1.5 rounded-md text-[13px] font-medium bg-[#f1f1ef] text-[#37352f]/80 border border-[#e8e8e4] hover:bg-[#e8f4fd] hover:text-[#2383e2] hover:border-[#2383e2]/20 transition-colors cursor-default"
+                className="skill-tag inline-flex items-center px-3.5 py-2 rounded-lg text-[13px] font-medium text-[#37352f]/80 border border-[#e8e8e4] cursor-default shadow-sm"
               >
                 {skill}
               </span>
@@ -153,62 +157,62 @@ function App() {
           </div>
         </section>
 
-        <hr className="border-[#e8e8e4]" />
+        <hr className="border-0 h-px bg-gradient-to-r from-transparent via-[#e8e8e4] to-transparent" />
 
         {/* Professional Experience */}
-        <section id="experience" className="py-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded flex items-center justify-center bg-[#e8fde8]">
-              <Briefcase size={16} className="text-[#2ea44f]" />
+        <section id="experience" className="py-12">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#e8fde8] to-[#d4f0d4] shadow-sm">
+              <Briefcase size={17} className="text-[#2ea44f]" />
             </div>
-            <h2 className="text-[20px] font-semibold text-[#37352f]">Professional Experience</h2>
+            <h2 className="text-[22px] font-bold text-[#37352f] section-accent">Professional Experience</h2>
           </div>
 
-          <div className="pl-11 space-y-6">
+          <div className="pl-12 space-y-4">
             {resumeData.experience.map((exp, index) => (
               <div
                 key={index}
-                className="border border-[#e8e8e4] rounded-lg p-5 -ml-4 bg-white"
+                className="exp-card rounded-xl p-5 -ml-4"
               >
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-[15px] font-semibold text-[#37352f] mb-1">
+                    <h3 className="text-[16px] font-bold text-[#37352f] mb-1.5">
                       {exp.role}
                     </h3>
-                    <div className="flex items-center gap-1.5 text-[13.5px] text-[#787774]">
-                      <Building2 size={13} className="flex-shrink-0" />
-                      <span className="font-medium">{exp.company}</span>
+                    <div className="flex items-center gap-2 text-[14px]">
+                      <Building2 size={14} className="flex-shrink-0 text-[#2383e2]" />
+                      <span className="font-semibold text-[#2383e2]">{exp.company}</span>
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="flex items-center gap-1.5 text-[13px] text-[#787774]">
+                    <div className="flex items-center gap-1.5 text-[13px] text-[#787774] bg-[#f1f1ef] px-3 py-1.5 rounded-full">
                       <Calendar size={12} />
-                      <span>{exp.date}</span>
+                      <span className="font-medium">{exp.date}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="ml-0">
-                  <p className="text-[13px] text-[#787774] mb-3 flex items-center gap-1.5">
-                    <MapPin size={12} />
+                  <p className="text-[13px] text-[#787774] mb-4 flex items-center gap-1.5">
+                    <MapPin size={12} className="text-[#787774]" />
                     {exp.location}
                   </p>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-3">
                     {exp.bullets.map((bullet, bIndex) => (
                       <li
                         key={bIndex}
-                        className="text-[14px] text-[#37352f]/80 leading-[1.7] flex items-start gap-2.5"
+                        className="text-[14px] text-[#37352f]/85 leading-[1.75] flex items-start gap-3"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#787774] mt-2 flex-shrink-0" />
-                        {bullet}
+                        <span className="w-2 h-2 rounded-full bg-gradient-to-br from-[#2383e2] to-[#1a6fc4] mt-2 flex-shrink-0 shadow-sm" />
+                        <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {exp.skills.map((skill, sIndex) => (
                       <span
                         key={sIndex}
-                        className="inline-flex items-center px-2.5 py-1 rounded text-[12px] font-medium bg-[#f1f1ef] text-[#787774]"
+                        className="skill-tag inline-flex items-center px-3 py-1.5 rounded-lg text-[12px] font-medium text-[#37352f]/70 border border-[#e8e8e4] shadow-sm"
                       >
                         {skill}
                       </span>
@@ -220,102 +224,104 @@ function App() {
           </div>
         </section>
 
-        <hr className="border-[#e8e8e4]" />
+        <hr className="border-0 h-px bg-gradient-to-r from-transparent via-[#e8e8e4] to-transparent" />
 
         {/* Education */}
-        <section id="education" className="py-10">
-          <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-8 rounded flex items-center justify-center bg-[#f3e8fd]">
-              <GraduationCap size={16} className="text-[#8b5cf6]" />
+        <section id="education" className="py-12">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#f3e8fd] to-[#e4d4f7] shadow-sm">
+              <GraduationCap size={17} className="text-[#8b5cf6]" />
             </div>
-            <h2 className="text-[20px] font-semibold text-[#37352f]">Education</h2>
+            <h2 className="text-[22px] font-bold text-[#37352f] section-accent">Education</h2>
           </div>
 
-          <div className="pl-11 space-y-4">
+          <div className="pl-12 grid gap-4 sm:grid-cols-2">
             {resumeData.education.map((edu, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-4 rounded-lg border border-[#e8e8e4] bg-white"
+                className="exp-card rounded-xl p-5 card-hover"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#f1f1ef] flex items-center justify-center flex-shrink-0">
-                  <GraduationCap size={18} className="text-[#787774]" />
-                </div>
-                <div>
-                  <h3 className="text-[15px] font-semibold text-[#37352f]">{edu.degree}</h3>
-                  <p className="text-[14px] text-[#787774] mt-0.5">{edu.school}</p>
-                  <p className="text-[13px] text-[#787774] mt-1 flex items-center gap-1.5">
-                    <Calendar size={12} />
-                    {edu.year}
-                  </p>
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-[#f3e8fd] to-[#e4d4f7] flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <GraduationCap size={19} className="text-[#8b5cf6]" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-[15px] font-bold text-[#37352f]">{edu.degree}</h3>
+                    <p className="text-[14px] text-[#787774] mt-1 font-medium">{edu.school}</p>
+                    <p className="text-[13px] text-[#787774] mt-2 flex items-center gap-1.5 bg-[#f1f1ef] px-2.5 py-1 rounded-full inline-flex">
+                      <Calendar size={12} />
+                      <span className="font-medium">{edu.year}</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        <hr className="border-[#e8e8e4]" />
+        <hr className="border-0 h-px bg-gradient-to-r from-transparent via-[#e8e8e4] to-transparent" />
 
         {/* Quick Stats */}
-        <section className="py-10">
+        <section className="py-12">
           <div className="pl-0 grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="text-center p-5 rounded-xl bg-[#f9f9f8] border border-[#e8e8e4]">
-              <div className="w-10 h-10 mx-auto rounded-lg bg-[#e8f4fd] flex items-center justify-center mb-3">
-                <Briefcase size={18} className="text-[#2383e2]" />
+            <div className="stat-card text-center p-6 rounded-xl border border-[#e8e8e4] shadow-sm">
+              <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-[#e8f4fd] to-[#d4e9f7] flex items-center justify-center mb-4 shadow-sm">
+                <Briefcase size={20} className="text-[#2383e2]" />
               </div>
-              <div className="text-[24px] font-bold text-[#37352f]">12+</div>
-              <div className="text-[12px] text-[#787774] mt-1">Years Experience</div>
+              <div className="text-[28px] font-extrabold gradient-text">12+</div>
+              <div className="text-[12px] text-[#787774] mt-2 font-medium">Years Experience</div>
             </div>
-            <div className="text-center p-5 rounded-xl bg-[#f9f9f8] border border-[#e8e8e4]">
-              <div className="w-10 h-10 mx-auto rounded-lg bg-[#e8fde8] flex items-center justify-center mb-3">
-                <Building2 size={18} className="text-[#2ea44f]" />
+            <div className="stat-card text-center p-6 rounded-xl border border-[#e8e8e4] shadow-sm">
+              <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-[#e8fde8] to-[#d4f0d4] flex items-center justify-center mb-4 shadow-sm">
+                <Building2 size={20} className="text-[#2ea44f]" />
               </div>
-              <div className="text-[24px] font-bold text-[#37352f]">18</div>
-              <div className="text-[12px] text-[#787774] mt-1">Companies</div>
+              <div className="text-[28px] font-extrabold gradient-text">18</div>
+              <div className="text-[12px] text-[#787774] mt-2 font-medium">Companies</div>
             </div>
-            <div className="text-center p-5 rounded-xl bg-[#f9f9f8] border border-[#e8e8e4]">
-              <div className="w-10 h-10 mx-auto rounded-lg bg-[#fce8e8] flex items-center justify-center mb-3">
-                <Layers size={18} className="text-[#e03e3e]" />
+            <div className="stat-card text-center p-6 rounded-xl border border-[#e8e8e4] shadow-sm">
+              <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-[#fce8e8] to-[#f5d4d4] flex items-center justify-center mb-4 shadow-sm">
+                <Layers size={20} className="text-[#e03e3e]" />
               </div>
-              <div className="text-[24px] font-bold text-[#37352f]">15</div>
-              <div className="text-[12px] text-[#787774] mt-1">Core Skills</div>
+              <div className="text-[28px] font-extrabold gradient-text">15</div>
+              <div className="text-[12px] text-[#787774] mt-2 font-medium">Core Skills</div>
             </div>
-            <div className="text-center p-5 rounded-xl bg-[#f9f9f8] border border-[#e8e8e4]">
-              <div className="w-10 h-10 mx-auto rounded-lg bg-[#f3e8fd] flex items-center justify-center mb-3">
-                <Award size={18} className="text-[#8b5cf6]" />
+            <div className="stat-card text-center p-6 rounded-xl border border-[#e8e8e4] shadow-sm">
+              <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-[#f3e8fd] to-[#e4d4f7] flex items-center justify-center mb-4 shadow-sm">
+                <Award size={20} className="text-[#8b5cf6]" />
               </div>
-              <div className="text-[24px] font-bold text-[#37352f]">2</div>
-              <div className="text-[12px] text-[#787774] mt-1">Degrees</div>
+              <div className="text-[28px] font-extrabold gradient-text">2</div>
+              <div className="text-[12px] text-[#787774] mt-2 font-medium">Degrees</div>
             </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="pt-8 pb-6 border-t border-[#e8e8e4]">
+        <footer className="pt-10 pb-8 mt-12 border-t border-[#e8e8e4] bg-gradient-to-b from-transparent to-[#fafbfc]">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-[#787774]">
-            <p>&copy; {new Date().getFullYear()} Eugene Belong. All rights reserved.</p>
-            <div className="flex items-center gap-4">
+            <p className="font-medium">&copy; {new Date().getFullYear()} Eugene Belong. All rights reserved.</p>
+            <div className="flex items-center gap-5">
               <a
                 href={`mailto:${resumeData.profile.email}`}
-                className="flex items-center gap-1.5 hover:text-[#2383e2] transition-colors"
+                className="flex items-center gap-2 hover:text-[#2383e2] transition-all hover:translate-y-[-2px]"
               >
-                <Mail size={13} />
-                Email
+                <Mail size={14} />
+                <span>Email</span>
               </a>
               <a
                 href={resumeData.profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-[#2383e2] transition-colors"
+                className="flex items-center gap-2 hover:text-[#2383e2] transition-all hover:translate-y-[-2px]"
               >
-                <Linkedin size={13} />
-                LinkedIn
+                <Linkedin size={14} />
+                <span>LinkedIn</span>
               </a>
               <a
                 href={`tel:${resumeData.profile.phone}`}
-                className="flex items-center gap-1.5 hover:text-[#2383e2] transition-colors"
+                className="flex items-center gap-2 hover:text-[#2383e2] transition-all hover:translate-y-[-2px]"
               >
-                <Phone size={13} />
-                Call
+                <Phone size={14} />
+                <span>Call</span>
               </a>
             </div>
           </div>
