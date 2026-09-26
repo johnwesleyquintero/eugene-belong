@@ -16,15 +16,17 @@ import {
   Moon,
 } from "lucide-react";
 import { resumeData } from "./resumeData";
+import { NeuralBackground } from "./NeuralBackground";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
+    if (typeof window === "undefined") return true;
     const saved = localStorage.getItem("theme");
     if (saved) return saved === "dark";
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // Default to dark mode if no preference saved
+    return true;
   });
 
   useEffect(() => {
@@ -66,7 +68,10 @@ function App() {
   const toggleTheme = () => setIsDark(!isDark);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Neural Background */}
+      <NeuralBackground />
+      
       {/* Top Navigation Bar */}
       <nav
         className="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm"
@@ -78,12 +83,12 @@ function App() {
         <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center shadow-sm"
+              className="w-8 h-8 rounded-lg flex items-center justify-center shadow-md"
               style={{
                 background: "linear-gradient(135deg, var(--gradient-text-from), var(--gradient-text-to))",
               }}
             >
-              <span className="text-white font-bold text-sm">E</span>
+              <span className="font-bold text-sm" style={{ color: "white" }}>E</span>
             </div>
             <span
               className="font-bold text-[16px]"
@@ -135,7 +140,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <header className="max-w-4xl mx-auto px-6 pt-12 pb-10 fade-in-up">
+      <header className="max-w-4xl mx-auto px-6 pt-12 pb-10 fade-in-up relative z-10">
         {/* Cover Photo Banner */}
         <div className="relative mb-16">
           <div className="cover-overlay h-48 sm:h-56 rounded-2xl overflow-hidden shadow-md">
@@ -207,7 +212,7 @@ function App() {
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-6 pb-20">
+      <div className="max-w-4xl mx-auto px-6 pb-20 relative z-10">
         <hr
           className="border-0 h-px"
           style={{
