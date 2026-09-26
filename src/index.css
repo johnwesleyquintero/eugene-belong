@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 * {
@@ -14,7 +14,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #37352f;
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+  min-height: 100vh;
 }
 
 /* Notion-style selection */
@@ -32,12 +33,148 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d3d1cb;
+  background: linear-gradient(180deg, #d3d1cb 0%, #aeaca6 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #aeaca6;
+  background: linear-gradient(180deg, #aeaca6 0%, #8a8880 100%);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #2383e2 0%, #1a6fc4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle gradient border */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(35, 131, 226, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(35, 131, 226, 0.12);
+}
+
+/* Skill tag gradient hover */
+.skill-tag {
+  transition: all 0.2s ease;
+  background: linear-gradient(135deg, #f1f1ef 0%, #e8e8e4 100%);
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, #e8f4fd 0%, #d4e9f7 100%);
+  border-color: rgba(35, 131, 226, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(35, 131, 226, 0.1);
+}
+
+/* Section header gradient accent */
+.section-accent {
+  position: relative;
+}
+
+.section-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #2383e2 0%, #8b5cf6 100%);
+  border-radius: 2px;
+}
+
+/* Profile photo ring */
+.profile-ring {
+  position: relative;
+}
+
+.profile-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2383e2 0%, #8b5cf6 50%, #ec4899 100%);
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* Stats card gradient */
+.stat-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(35, 131, 226, 0.15);
+}
+
+/* Print button gradient */
+.print-btn {
+  background: linear-gradient(135deg, #2383e2 0%, #1a6fc4 100%);
+  transition: all 0.2s ease;
+}
+
+.print-btn:hover {
+  background: linear-gradient(135deg, #1a6fc4 0%, #155a9e 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(35, 131, 226, 0.3);
+}
+
+/* Cover photo gradient overlay */
+.cover-overlay {
+  position: relative;
+}
+
+.cover-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 0.05) 50%, 
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Experience card subtle gradient */
+.exp-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fcfcfd 100%);
+  border: 1px solid #e8e8e4;
+  transition: all 0.2s ease;
+}
+
+.exp-card:hover {
+  border-color: rgba(35, 131, 226, 0.2);
+  box-shadow: 0 4px 16px -4px rgba(35, 131, 226, 0.08);
 }
 
 /* Animation for expanding experience items */
@@ -74,6 +211,7 @@ body {
   body {
     font-size: 10pt;
     line-height: 1.4;
+    background: white !important;
   }
   
   /* Remove backgrounds and shadows for cleaner print */
@@ -82,27 +220,19 @@ body {
   }
   
   /* Ensure all experience items are visible */
-  .group {
+  .exp-card {
     border: 1px solid #e8e8e4 !important;
     padding: 12px !important;
     margin-bottom: 8px !important;
     page-break-inside: avoid;
     break-inside: avoid;
+    background: white !important;
   }
   
   /* Better section breaks */
   section {
     page-break-inside: avoid;
     break-inside: avoid;
-  }
-  
-  /* Hide cover photo in print */
-  header .relative {
-    display: none !important;
-  }
-  
-  header .pl-0 {
-    padding-left: 0 !important;
   }
   
   /* Ensure headers don't orphan */
@@ -112,7 +242,7 @@ body {
   }
   
   /* Remove hover states */
-  .group:hover {
+  .exp-card:hover {
     background: white !important;
     border-color: #e8e8e4 !important;
   }
@@ -135,8 +265,17 @@ body {
   }
   
   /* Keep skill tags visible */
-  .bg-\[#f1f1ef\] {
+  .skill-tag {
     background-color: #f5f5f5 !important;
     border: 1px solid #e0e0e0 !important;
+  }
+  
+  /* Hide cover photo in print */
+  header .relative {
+    display: none !important;
+  }
+  
+  header .pl-0 {
+    padding-left: 0 !important;
   }
 }
